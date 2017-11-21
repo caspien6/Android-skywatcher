@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.flavienlaurent.discrollview.lib.DiscrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/discroll_view">
+
+    <com.flavienlaurent.discrollview.lib.DiscrollViewContent
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorMainBackground">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/pod_title"
+            android:textSize="50sp"
+            android:text="@string/loading"
+            android:textColor="@color/colorPrimaryDark"
+            />
+
+        <ImageView
+            android:id="@+id/picture_of_the_day"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            />
+
+        <TextView
+            android:id="@+id/pod_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            />
+
+
+    </com.flavienlaurent.discrollview.lib.DiscrollViewContent>
+</com.flavienlaurent.discrollview.lib.DiscrollView>
