@@ -30,6 +30,7 @@ import java.util.zip.Inflater;
 import hu.bme.aut.skywatcher.R;
 import hu.bme.aut.skywatcher.model.PictureoftheDay;
 import hu.bme.aut.skywatcher.network.NetworkManager;
+import hu.bme.aut.skywatcher.utility.TouchImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,7 +47,7 @@ public class MainFragment extends Fragment {
     TextView title;
     TextView description;
     PictureoftheDay pic_of_day;
-    ImageView picture;
+    TouchImageView picture;
 
     boolean isImageFitToScreen;
 
@@ -61,7 +62,7 @@ public class MainFragment extends Fragment {
         title = (TextView) v.findViewById(R.id.pod_title);
         title.setFocusableInTouchMode(true);
         description = (TextView) v.findViewById(R.id.pod_description);
-        picture = (ImageView) v.findViewById(R.id.picture_of_the_day);
+        picture = (TouchImageView) v.findViewById(R.id.picture_of_the_day);
 
         //picture.setFocusableInTouchMode(true);
 
@@ -129,7 +130,7 @@ public class MainFragment extends Fragment {
                         picture.setImageBitmap(resource);
                     }
                 });
-        //discrollView.addView(picture);
+
         title.setText(pic_of_day.getTitle());
         description.setText(pic_of_day.getExplanation());
 

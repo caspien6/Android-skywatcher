@@ -1,12 +1,19 @@
 package hu.bme.aut.skywatcher.network;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import hu.bme.aut.skywatcher.model.SearchedPictures;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkManager2 {
 
     private static final String ENDPOINT_ADDRESS = "https://images-api.nasa.gov/";
-    private static final String APP_ID = "SZB0PcRIyi4mgKBHKIkXCBsfXyH0EX9nfblt2Qjt";
 
     private static NetworkManager2 instance;
 
@@ -16,20 +23,26 @@ public class NetworkManager2 {
         }
         return instance;
     }
-/*
+
+
     private Retrofit retrofit;
-    private WeatherApi weatherApi;
+    private ImageSearcherApi imageSearcherApiApi;
 
     private NetworkManager2() {
+
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(ENDPOINT_ADDRESS)
-                .client(new OkHttpClient.Builder().build())
+                .client(new OkHttpClient.Builder().addNetworkInterceptor(new StethoInterceptor()).build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        weatherApi = retrofit.create(WeatherApi.class);
+        imageSearcherApiApi = retrofit.create(ImageSearcherApi.class);
     }
 
-    public Call<WeatherData> getWeather(String city) {
-        return weatherApi.getWeather(city, "metric", APP_ID);
-    }*/
+    public Call<SearchedPictures> getImageByName(String name) {
+        Map<String, String> params = new HashMap<String,String>();
+        params.put("media_type", "image");
+        params.put("q", name);
+        return imageSearcherApiApi.getPicture(params);
+    }
 }

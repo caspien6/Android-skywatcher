@@ -19,11 +19,16 @@
             android:textColor="@color/colorPrimaryDark"
             />
 
-        <ImageView
+        <hu.bme.aut.skywatcher.utility.TouchImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:id="@+id/picture_of_the_day" />
+
+        <!-- <ImageView
             android:id="@+id/picture_of_the_day"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            />
+            /> -->
 
         <TextView
             android:id="@+id/pod_description"
