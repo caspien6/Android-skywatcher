@@ -9,6 +9,6 @@ import retrofit2.http.Query;
 public interface PoDApi {
 
     @GET("/planetary/apod")
-    Call<PictureoftheDay> getPicture(@Query("api_key") String appId);
+    Call<PictureoftheDay> getPicture(@Query("api_key") String appId, @Query("date") String date);
 
 }

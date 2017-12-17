@@ -1,19 +1,36 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="hu.bme.aut.skywatcher.ui.SearchFragment">
 
+
+    tools:context="hu.bme.aut.skywatcher.ui.SearchFragment"
+    android:background="@color/fbutton_color_clouds">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        >
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/astronaut_dog"
+            />
         <EditText
             android:id="@+id/image_search_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLength="30"
             android:maxHeight="40dp"
+            android:singleLine="true"
+            android:textAlignment="center"
             android:hint="@string/writeforsearch" />
 
         <Button
@@ -22,14 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/listPictureView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
 
     </LinearLayout>
+    </ScrollView>
 
 
-</FrameLayout>
+</RelativeLayout>

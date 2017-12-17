@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/earth"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/earth"
+        />
+    <item
+        android:id="@+id/mars"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/mars"
+        />
+    <item
+        android:id="@+id/saturn"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/saturn"
+        />
+    <item
+        android:id="@+id/jupiter"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/jupiter"
+        />
+</menu>

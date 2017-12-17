@@ -4,5 +4,21 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="writeforsearch">Írj be szöveget a kereséshez</string>
-    <string name="search">Search</string>
+    <string name="search">Keresés</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="serialize_item">my_item</string>
+    <string name="write_ext_stor_per_title">Write external storage permission</string>
+    <string name="i_need_write_permission">Szükség van a képek lementéséhez a write external storage permission-re</string>
+    <string name="ok">Ok</string>
+    <string name="no_permission_no_save">Mivel nem adtad meg a permission-t ezért nem mentettem le a képet</string>
+    <string name="serialized_images">serialized_images</string>
+    <string name="delete_item">Delete item</string>
+    <string name="no_result">Sajnos nincs találat a megadott szövegre.</string>
+    <string name="no_word">Nem adtál meg keresési szöveget</string>
+    <string name="error_in_network">Error in network request</string>
+    <string name="fragment_not_founded">Nem találta meg a fragmenst</string>
+    <string name="logged_items">logged_items</string>
+    <string name="my_items">my_item</string>
 </resources>

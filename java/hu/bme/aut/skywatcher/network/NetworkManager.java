@@ -36,8 +36,8 @@ public class NetworkManager {
         pictureapi = retrofit.create(PoDApi.class);
     }
 
-    public Call<PictureoftheDay> getPicture() {
-        return pictureapi.getPicture(APP_ID);
+    public Call<PictureoftheDay> getPicture(String date) {
+        return pictureapi.getPicture(APP_ID, date);
     }
 
 }

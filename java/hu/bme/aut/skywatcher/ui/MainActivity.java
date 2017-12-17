@@ -1,27 +1,28 @@
 package hu.bme.aut.skywatcher.ui;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.v4.view.ViewPager;
-
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
+import java.util.Random;
+
 import hu.bme.aut.skywatcher.R;
+import hu.bme.aut.skywatcher.model.SearchedPictures;
+import hu.bme.aut.skywatcher.ui.adapter.MainPagerAdapter;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SearchFragment.OnSearchButtonClickedListener{
 
+    ViewPager vpMain;
+    MainPagerAdapter mainPagerAdapter;
 
 
     @Override
@@ -31,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        final ViewPager vpMain = (ViewPager) findViewById(R.id.vpMain);
-        vpMain.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this).create()));
+        vpMain = (ViewPager) findViewById(R.id.vpMain);
+        mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), FragmentPagerItems.with(this).create());
+        vpMain.setAdapter(mainPagerAdapter);
         vpMain.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -41,14 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                InputMethodManager inputManager = (InputMethodManager) vpMain.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                // check if no view has focus:
-                View v = ((Activity) vpMain.getContext()).getCurrentFocus();
-                if (v == null)
-                    return;
-
-                inputManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                final InputMethodManager imm = (InputMethodManager)getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(vpMain.getWindowToken(), 0);
             }
 
             @Override
@@ -64,4 +61,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onSearchConditionSelected(SearchedPictures item) {
+        LoggerFragment lf =  mainPagerAdapter.getLoggerFragment();
+        if (lf != null) {
+            int[] androidColors = getResources().getIntArray(R.array.androidcolors);
+            item.setRandomColorIndex(new Random().nextInt(androidColors.length));
+            lf.adapter.addItem(item);
+        }
+        else{
+            Toast.makeText(this,
+                    R.string.fragment_not_founded,Toast.LENGTH_SHORT).show();
+        }
+    }
 }
